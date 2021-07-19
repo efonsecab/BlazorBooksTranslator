@@ -1,0 +1,43 @@
+﻿@page "/"
+
+<div class="container">
+    <div class="mb-3">
+        <LoadingIndicator IsLoading="IsLoading"></LoadingIndicator>
+    </div>
+    <EditForm Model="Model" OnValidSubmit="OnValidSubmit">
+        <div class="mb-3">
+            <DataAnnotationsValidator></DataAnnotationsValidator>
+            <ValidationSummary></ValidationSummary>
+        </div>
+        <div class="mb-3">
+            <label class="text-danger">
+                @ErrorMessage
+            </label>
+            <label class="text-success">
+                @SuccessMessage
+            </label>
+        </div>
+        <div class="from-group">
+            <label class="form-label">Email Address:</label>
+            <InputText class="form-control" @bind-Value="Model.EmailAddressForResults"></InputText>
+        </div>
+        <div class="form-group">
+            <label class="form-label">Source File Url:</label>
+            <InputText class="form-control" @bind-Value="Model.SourceFileUrl"></InputText>
+        </div>
+        <div class="form-group">
+            <label class="form-label">Source Language</label>
+            <LanguageSelector SelectedValue="@Model.BookSourceLanguage"></LanguageSelector>
+        </div>
+        <div class="form-group">
+            <label class="form-label">Dest Language</label>
+            <LanguageSelector SelectedValue="@Model.BookOutputLanguage"></LanguageSelector>
+        </div>
+        @if (!IsLoading)
+        {
+            <div class="mb-3">
+                <button type="submit" class="btn btn-primary">Translate</button>
+            </div>
+        }
+    </EditForm>
+</div>

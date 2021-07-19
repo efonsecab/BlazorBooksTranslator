@@ -1,0 +1,8 @@
+﻿<InputSelect class="form-control" @bind-Value="SelectedValue">
+    <option value="English">English</option>
+    <option value="Spanish">Spanish</option>
+</InputSelect>
+@code{
+    [Parameter]
+    public string SelectedValue { get; set; }
+}
